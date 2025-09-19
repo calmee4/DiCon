@@ -8,7 +8,8 @@
 
 <img width="350" height="500" alt="Positive_DDIs_Pipeline" src="https://github.com/user-attachments/assets/fe342bee-423f-4c1e-be76-d6d900417223" />
 
-For easy reproduction, we provide **Drug Interaction information** in `./data/descriptions.txt`. If you need more detailed drug information, you can download `database.xml` from DrugBank. 🏥
+For easy reproduction, we provide the **Drug Interaction information**. You can download [`descriptions.txt`](https://drive.google.com/drive/folders/1tPZgq_7Z9_ej-oYQnXFO-DiDNfgTBGoX?usp=sharing) and place it in the `./data/` directory.
+ If you need more comprehensive drug information, you may also download `database.xml` from DrugBank. 🏥
 
 ✨ **Note**: This research contributes to safer medication recommendation systems! 🎯
 
@@ -36,12 +37,17 @@ If anything fails during installation, follow `requirements_step_by_step.txt` to
 
 ## 4. Run evaluation 🧪:
 
+Due to storage limitations, you can download our best models from [`best_models`](https://drive.google.com/drive/folders/1tPZgq_7Z9_ej-oYQnXFO-DiDNfgTBGoX?usp=sharing).
+ Place **`Epoch_6_JA_0.5537_DDI_0.07087.model`** in `./src/Baselines/saved/mimic-iii/OurModel`, and **`Epoch_7_JA_0.4692_DDI_0.07334.model`** in `./src/Baselines/saved/mimic-iv/OurModel`.
+
+then
+
 ```bash
 cd src/Baselines
 ./test.sh
 ```
 
-or run directly:
+or run directly
 
 ```python
 python main_OurModel.py --cuda 0 --dataset "mimic-iii" --dim 1536 --Test true --resume_path "./saved/mimic-iii/OurModel/Epoch_6_JA_0.5537_DDI_0.07087.model"
@@ -55,24 +61,32 @@ cd src/Baselines
 ./run.sh
 ```
 
-or run directly:
+or run directly
 
-```python
+```bash
+cd src/Baselines
 python main_OurModel.py --cuda 0  --dim 1536 --dataset "mimic-iii"
 python main_OurModel.py --cuda 0  --dim 1536 --dataset "mimic-iv"
 ```
 
 ## 6. Prepare the raw MIMIC tables as follows 📊:
 
-You can refer to mimic-iii / mimic-iv documentation for the following files:
+Before running the project, please make sure you have completed the following preparations:
 
-**mimic-iii**: `DIAGNOSES_ICD.csv`, `PRESCRIPTIONS.csv`, `PROCEDURES_ICD.csv`
+1. **Access approval**
+    Apply for and obtain permission to use the [MIMIC-III](https://physionet.org/content/mimiciii/) and [MIMIC-IV](https://physionet.org/content/mimiciv/) databases.
+2. **Prepare the datasets**
+   - Download and extract the MIMIC-III and MIMIC-IV datasets.
+   - Place them under the `./data/input/` directory.
+   - From **MIMIC-III**, you will need:
+      `DIAGNOSES_ICD.csv`, `PRESCRIPTIONS.csv`, `PROCEDURES_ICD.csv`
+   - From **MIMIC-IV**, you will need:
+      `DIAGNOSES_ICD.csv`, `PRESCRIPTIONS.csv`, `PROCEDURES_ICD.csv`
+3. **Supplementary drug data**
+   - Download [`drugbank_drugs_info.csv`](https://drive.google.com/drive/folders/1tPZgq_7Z9_ej-oYQnXFO-DiDNfgTBGoX?usp=sharing), [`descriptions.txt`](https://drive.google.com/drive/folders/1tPZgq_7Z9_ej-oYQnXFO-DiDNfgTBGoX?usp=sharing), and [`drug-DDI.csv`](https://drive.google.com/drive/folders/1tPZgq_7Z9_ej-oYQnXFO-DiDNfgTBGoX?usp=sharing).
+   - Place all of them in the `./data/input/` directory.
 
-**mimic-iv**: `diagnoses_icd.csv`, `prescriptions.csv`, `procedures_icd.csv`
-
-Place them under: `./data/input/mimic-iii` and `./data/input/mimic-iv`
-
-Then run:
+Once all required files are in place, run:
 
 ```python
 python process.py
