@@ -17,7 +17,7 @@ For easy reproduction, we provide the **Drug Interaction information**. You can 
 
 ## 1. Install and create a new environment 🌟:
 ```bash
-git install https://github.com/calmee4/DiCon.git
+git clone https://github.com/calmee4/DiCon.git
 ```
 ```bash
 conda create -n DiCon python=3.12 -y
