@@ -2,7 +2,7 @@
 
 ## Introduction 🚀
 
-<img alt="Introduction" src="https://github.com/user-attachments/assets/d32211c7-de3a-46a1-ab31-778a6b2dcd6e" />
+<img width="1700" height="600" alt="Introduction" src="https://github.com/user-attachments/assets/d32211c7-de3a-46a1-ab31-778a6b2dcd6e" />
 
 ## How to Extract Positive Drug-Drug Interactions (DDIs) 💊🔍
 
