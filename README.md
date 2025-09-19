@@ -15,8 +15,12 @@ For easy reproduction, we provide the **Drug Interaction information**. You can 
 
 # How to Use Our Model 🛠️
 
-## 1. Create a new environment 🌟:
+## 1. Install and create a new environment 🌟:
 
+```bash
+git install https://github.com/calmee4/DiCon.git
+cd DiCon/
+```
 ```bash
 conda create -n DiCon python=3.12 -y
 ```
